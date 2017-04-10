@@ -1,0 +1,34 @@
+<form action='/user_cocktails/new' method='POST'>
+
+  Name: <input type='text' name='name'><br>
+  <div class="submissionfield">
+  Ingredients: <input type='text' name='ingredients'><br>
+  </div>
+  <div class="submissionfield">
+  Directions: <input type='text' name='directions'><br>
+  </div>
+
+<select required name="seasons">
+  <option value="" disabled selected>Season</option>
+  <option value="1">Winter</option>
+  <option value="2">Spring</option>
+  <option value="3">Summer</option>
+  <option value="4">Fall</option>
+</select>
+<label>Season</label>
+
+<select required name="spirits">
+  <option value="" disabled selected>Spirit</option>
+  <option value="1">Vodka</option>
+  <option value="2">Rum</option>
+  <option value="3">Tequila</option>
+  <option value="4">Mezcal</option>
+  <option value="5">Whiskey</option>
+  <option value="6">Bourbon</option>
+  <option value="7">Gin</option>
+</select>
+<label>Spirit</label>
+
+<button type='submit'>Submit</button><br>
+
+</form>

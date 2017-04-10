@@ -1,0 +1,14 @@
+<!-- {{#user_cocktails}}
+{{name}}
+{{ingredients}}
+{{directions}}
+{{/user_cocktails}} -->
+
+<!-- <a href="/user_cocktails/delete">DELETE A COCKTAIL</a>?
+<a href="/user_cocktails/update">UPDATE YOUR EXISTING COCKTAIL</a>? -->
+
+{{#user_cocktails}}
+<a href="/user_cocktails/winter/{{id}}">{{name}}</a>
+{{ingredients}}
+{{directions}}
+{{/user_cocktails}}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+
+<form action="/seasons_spirits/cocktails" method="POST">
+
+  Select Season:<select name="season">
+  <option value="" disabled selected>Season</option>
+  {{#seasons}}
+  <option value="{{ id }}">{{ name }}</option>
+  {{/seasons}}
+  </select>
+
+  Select Spirit:<select name="spirit">
+  <option value="" disabled selected>Spirit</option>
+  {{#spirits}}
+  <option value="{{ id }}">{{ name }}</option>
+  {{/spirits}}
+  </select>
+
+  <button type='submit'>Submit</button>
+
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+Which Cocktail do you want to delete?
+
+<!-- <form action="/user_cocktails/delete" method="DELETE"> -->
+
+<!-- <form action="/user_cocktails/delete?user_cocktails=8_method=DELETE" method="DELETE"> -->
+<!-- <form action="/user_cocktails/delete" method="DELETE">
+
+<select name="user_cocktails">
+<option value="" disabled selected>Cocktail</option>
+  {{#user_cocktails}}
+  <option value="{{ id }}">{{name}}</option>
+  {{name}}
+  {{/user_cocktails}}
+</select>
+
+<button type='submit'>Submit</button><br>
+
+</form> -->
+
+<!-- app.post('/seasons_spirits/cocktails', function(req, res) {
+  var season_id = req.body.season;
+  var spirit_id = req.body.spirit;
+  console.log(season_id, spirit_id);
+  db
+    .any("SELECT * FROM cocktails WHERE season_id = $1 AND spirit_id = $2", [season_id, spirit_id])
+    .then(function(data) {
+      console.log(data)
+      let cocktail_data = {
+        cocktails: data
+      };
+    res.render('cocktails/index', cocktail_data)
+  })
+}); -->
+
