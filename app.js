@@ -13,6 +13,7 @@ const salt = bcrypt.genSalt(10);
 app.engine("html", mustacheExpress());
 app.set("view engine", "html");
 app.set("views", __dirname + "/views");
+// app.use("/", express.static(__dirname + "/public/starter-template/"));
 app.use("/", express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -348,6 +349,27 @@ app.put('/user_cocktails/fall/update/:id', function(req, res) {
     });
 });
 
+app.get('/signup', function(req, res){
+  res.render('signup/index');
+});
+
+app.post('/signup', function(req, res){
+  let data = req.body;
+  console.log(data);
+  bcrypt
+    .hash(data.password_digest, 10, function(err, hash) {
+      db
+        .none ("INSERT INTO users (email, password_digest, first_name, last_name) VALUES ($1, $2, $3, $4)", [data.email, hash, data.first_name, data.last_name])
+        .then(function(user) {
+        // res.send('User created!');
+        res.redirect('/seasons_spirits');
+      })
+        .catch(function() {
+          res.send('Are you already a user? Please login!')
+      });
+  });
+});
+
 app.get('/login', function(req, res) {
   res.render('login/index');
 });
@@ -373,25 +395,9 @@ app.post('/login', function(req, res) {
       });
 });
 
-app.get('/signup', function(req, res){
-  res.render('signup/index');
-});
-
-app.post('/signup', function(req, res){
-  let data = req.body;
-  console.log(data);
-  bcrypt
-    .hash(data.password_digest, 10, function(err, hash) {
-      db
-        .none ("INSERT INTO users (email, password_digest, first_name, last_name) VALUES ($1, $2, $3, $4)", [data.email, hash, data.first_name, data.last_name])
-        .then(function(user) {
-        // res.send('User created!');
-        res.redirect('/seasons_spirits');
-      })
-        .catch(function() {
-          res.send('Fail')
-      });
-  });
+app.get('/logout', function(req, res){
+  req.session.user = false;
+  res.redirect('/');
 });
 
 app.listen(3000, function() {

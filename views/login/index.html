@@ -1,7 +1,70 @@
-<form action="/login" method="post">
+<!doctype html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Cocktail App</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/starter-template/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/starter-template/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  </head>
+  <body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Home</a>
+      <ul class="right hide-on-med-and-down">
+        <!-- <li><a href="/signup">Navbar Link</a></li> -->
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <!-- <li><a href="/signup">Navbar Link</a></li> -->
+      </ul>
+      <a href="/signup" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="container">
+  <!-- <div class="main-container"> -->
+    <!-- <div class="border-container"> -->
+      <h1 class="header center orange-text">Cocktail App!</h1>
+      <h4>If you haven't already, please <a href="/signup">signup</a>!</h4>
+        <br><div class="col-lg-6 center-align">
+          <div class="well bs-component">
+            <form class="form-horizontal center-align" action="/signup" method="post">
+              <fieldset>
+                <legend>Login</legend>
+                <div class="container">
+                  <div class="row">
+                    <div class="col s12 center-align">
+                      <div class="input-field col s6 offset-1">
+                        <input required placeholder="Email" name="email" id="email" type="text" class="validate" value="jrachelh5@gmail.com">
+                      </div>
+                      <div class="input-field col s6 offset-1">
+                        <input required placeholder="Password" name="password_digest" id="password" type="password" class="validate" value="NY2238">
+                      </div>
+                    </div>
+                  </div>
+                  <br><div class="form-group center-align">
+                    <div class="col-lg-10 col-lg-offset-5">
+                      <button type="submit" class="btn-large waves-effect waves-light orange">Login</button>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
+
+
+<!-- <form action="/login" method="post">
 <input required placeholder="Email" name="email" id="email" type="text" class="validate" value="jrachelh5@gmail.com">
 <input required placeholder="Password" name="password_digest" id="password" type="password" class="validate" value="NY2238">
 <button type="submit">Login</button>
 </form>
 
-LOGIN
+LOGIN -->

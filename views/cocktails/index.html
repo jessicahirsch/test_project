@@ -1,8 +1,95 @@
-{{#cocktails}}
+<!doctype html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cocktail App</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+  </head>
+  <body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Home</a>
+      <ul class="right hide-on-med-and-down">
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <!-- <li><a href="/signup">Navbar Link</a></li> -->
+      </ul>
+      <a href="/signup" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <br>
+  <div class="container" id="card">
+    <div class="card">
+    {{#cocktails}}
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="http://www.saveur.com/sites/saveur.com/files/styles/large_1x_/public/import/2014/Fungus-Cocktails_2000x3000.jpg?itok=CI7zIvqh">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
+        <p><a href="/user_cocktails">Add Your Own?</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{name}}<i class="material-icons right">close</i></span>
+        <p>Ingredients: {{ingredients}}<br><br>Directions: {{directions}}</p>
+      </div>
+      {{/cocktails}}
+    </div>
+  </div>
+  <!-- <div class="container">
+  <div class="main-container">
+    <div class="border-container">
+      <h1 class="header center orange-text">{{name}}</h1>
+      <h4>If you haven't already, please <a href="/signup">signup</a>!</h4>
+      {{}}
+        <br><div class="col-lg-6 center-align">
+          <div class="well bs-component">
+              <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/office.jpg">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{name}}<i class="material-icons right">more_vert</i></span>
+                <p><a href="/user_cocktails">Add Your Own?</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div> -->
+
+  </body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+</html>
+
+
+<!-- <form action="/login" method="post">
+<input required placeholder="Email" name="email" id="email" type="text" class="validate" value="jrachelh5@gmail.com">
+<input required placeholder="Password" name="password_digest" id="password" type="password" class="validate" value="NY2238">
+<button type="submit">Login</button>
+</form>
+
+LOGIN -->
+
+<!-- {{#cocktails}}
 {{name}}
 {{ingredients}}
 {{directions}}
 {{/cocktails}}
 
-<a href="/user_cocktails">Add Your Own?</a>
+<a href="/user_cocktails">Add Your Own?</a> -->
 <!-- Add to Your Own Menu? -->
