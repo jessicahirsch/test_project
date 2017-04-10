@@ -4,6 +4,8 @@ const pgp = require('pg-promise')();
 const mustacheExpress = require('mustache-express');
 const bodyParser = require("body-parser");
 const session = require('express-session');
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 
 const bcrypt = require('bcrypt');
 const salt = bcrypt.genSalt(10);
@@ -65,16 +67,16 @@ app.post('/seasons_spirits/cocktails', function(req, res) {
         cocktails: data
       };
     res.render('cocktails/index', cocktail_data)
-  })
+  });
 });
 
 app.get('/user_cocktails', function(req, res) {
-  res.render('user_cocktails')
+  res.render('user_cocktails');
 });
 
 app.get('/user_cocktails/new', function(req, res) {
-  res.render('user_cocktails/new')
-})
+  res.render('user_cocktails/new');
+});
 
 app.post('/user_cocktails/new', function(req, res) {
   var name = req.body.name;
@@ -87,7 +89,7 @@ app.post('/user_cocktails/new', function(req, res) {
     .then(function() {
       console.log(name, directions, ingredients, seasons, spirits)
     })
-  res.redirect('/user_cocktails/new')
+  res.redirect('/user_cocktails/new');
 });
 
 app.get('/user_cocktails/winter', function(req, res) {
@@ -99,8 +101,8 @@ app.get('/user_cocktails/winter', function(req, res) {
       let winter_data = {
         user_cocktails: data
       }
-    res.render('user_cocktails/winter', winter_data)
-    })
+    res.render('user_cocktails/winter', winter_data);
+    });
 });
 
 app.get('/user_cocktails/spring', function(req, res) {
@@ -112,8 +114,8 @@ app.get('/user_cocktails/spring', function(req, res) {
       let spring_data = {
         user_cocktails: data
       }
-    res.render('user_cocktails/spring', spring_data)
-    })
+    res.render('user_cocktails/spring', spring_data);
+    });
 });
 
 app.get('/user_cocktails/summer', function(req, res) {
@@ -125,8 +127,8 @@ app.get('/user_cocktails/summer', function(req, res) {
       let summer_data = {
         user_cocktails: data
       }
-    res.render('user_cocktails/summer', summer_data)
-    })
+    res.render('user_cocktails/summer', summer_data);
+    });
 });
 
 app.get('/user_cocktails/fall', function(req, res) {
@@ -138,22 +140,22 @@ app.get('/user_cocktails/fall', function(req, res) {
       let fall_data = {
         user_cocktails: data
       }
-    res.render('user_cocktails/fall', fall_data)
-    })
+    res.render('user_cocktails/fall', fall_data);
+    });
 });
 
 //
 
 app.get('/user_cocktails/winter/delete/:id', function(req, res) {
-  console.log('test')
-  let id = req.params.id
+  // console.log('test')
+  let id = req.params.id;
   db
     .none("DELETE FROM user_cocktails WHERE id = $1", [id]);
     res.redirect('/');
 })
 
 app.get('/user_cocktails/winter/:id', function(req, res) {
-  let id = req.params.id
+  let id = req.params.id;
   db
     .one("SELECT * FROM user_cocktails WHERE id = $1", [id])
     .then(function(data) {
@@ -161,20 +163,20 @@ app.get('/user_cocktails/winter/:id', function(req, res) {
         name: data.name,
         id: data.id
       }
-      res.render('user_cocktails/winter/show', winter)
-    })
-})
+      res.render('user_cocktails/winter/show', winter);
+    });
+});
 
 app.get('/user_cocktails/spring/delete/:id', function(req, res) {
   console.log('test')
-  let id = req.params.id
+  let id = req.params.id;
   db
     .none("DELETE FROM user_cocktails WHERE id = $1", [id]);
     res.redirect('/');
-})
+});
 
 app.get('/user_cocktails/spring/:id', function(req, res) {
-  let id = req.params.id
+  let id = req.params.id;
   db
     .one("SELECT * FROM user_cocktails WHERE id = $1", [id])
     .then(function(data) {
@@ -182,20 +184,20 @@ app.get('/user_cocktails/spring/:id', function(req, res) {
         name: data.name,
         id: data.id
       }
-      res.render('user_cocktails/spring/show', spring_data)
-    })
-})
+      res.render('user_cocktails/spring/show', spring_data);
+    });
+});
 
 app.get('/user_cocktails/summer/delete/:id', function(req, res) {
   console.log('test')
-  let id = req.params.id
+  let id = req.params.id;
   db
     .none("DELETE FROM user_cocktails WHERE id = $1", [id]);
     res.redirect('/');
-})
+});
 
 app.get('/user_cocktails/summer/:id', function(req, res) {
-  let id = req.params.id
+  let id = req.params.id;
   db
     .one("SELECT * FROM user_cocktails WHERE id = $1", [id])
     .then(function(data) {
@@ -203,20 +205,12 @@ app.get('/user_cocktails/summer/:id', function(req, res) {
         name: data.name,
         id: data.id
       }
-      res.render('user_cocktails/summer/show', summer_data)
-    })
-})
-
-app.get('/user_cocktails/fall/delete/:id', function(req, res) {
-  console.log('test')
-  let id = req.params.id
-  db
-    .none("DELETE FROM user_cocktails WHERE id = $1", [id]);
-    res.redirect('/');
-})
+      res.render('user_cocktails/summer/show', summer_data);
+    });
+});
 
 app.get('/user_cocktails/fall/:id', function(req, res) {
-  let id = req.params.id
+  let id = req.params.id;
   db
     .one("SELECT * FROM user_cocktails WHERE id = $1", [id])
     .then(function(data) {
@@ -224,79 +218,135 @@ app.get('/user_cocktails/fall/:id', function(req, res) {
         name: data.name,
         id: data.id
       }
-      res.render('user_cocktails/fall/show', fall_data)
+      res.render('user_cocktails/fall/show', fall_data);
+    });
+});
+
+app.get('/user_cocktails/fall/delete/:id', function(req, res) {
+  console.log('test')
+  let id = req.params.id;
+  db
+    .none("DELETE FROM user_cocktails WHERE id = $1", [id])
+    res.redirect('/');
+});
+
+// app.put('/user_cocktails/winter/update/:id', function(req, res) {
+//   let id = req.params.id;
+//   res.render('/user_cocktails/winter/update')
+// });
+
+app.get('/user_cocktails/winter/update/:id', function(req, res) {
+  let id = req.params.id;
+  db
+    .one("SELECT * FROM user_cocktails WHERE id = $1", [id])
+    .then(function(data) {
+      let winter = {
+        name: data.name,
+        id: data.id
+      }
+      res.render('user_cocktails/winter/update', winter);
+    });
+});
+
+app.put('/user_cocktails/winter/update/:id', function(req, res) {
+  let id = req.body;
+  console.log(req.body)
+  console.log(req.params.id)
+  db
+    .none("UPDATE user_cocktails SET name = $1 WHERE id = $2",
+      [req.body.name, req.params.id])
+    .then(function() {
+      // res.send('Name updated')
+      res.redirect('/')
     })
-})
+    .catch(function() {
+      res.send('Fail.');
+    });
+});
 
-// app.get('/user_cocktails/summer/delete/:id', function(req, res) {
-//   console.log('test')
-//   let id = req.params.id
-//   db
-//     .none("DELETE FROM user_cocktails WHERE id = $1", [id]);
-//     res.redirect('/');
-// })
-// app.get('/user_cocktails/delete?user_cocktails={{id}}', function(req, res) {
-//   let id = req.params.id
-//   db
-//     .none("DELETE FROM user_cocktails WHERE id = $1", [id]);
-//     res.redirect('/');
-// })
+app.get('/user_cocktails/spring/update/:id', function(req, res) {
+  let id = req.params.id;
+  db
+    .one("SELECT * FROM user_cocktails WHERE id = $1", [id])
+    .then(function(data) {
+      let spring = {
+        name: data.name,
+        id: data.id
+      }
+      res.render('user_cocktails/spring/update', spring);
+    });
+});
 
-// app.delete('/user_cocktails/delete/', function(req, res) {
-//   let id = req.params.id
-//   db
-//     .none("DELETE FROM user_cocktails WHERE id = $1", [id])
-//     .then(function(data) {
-//       let delete_cocktail_data = {
-//         user_cocktails: data
-//       }
-//       console.log(delete_cocktail_data)
-//     res.render('user_cocktails/delete/:id', delete_cocktail_data)
-//     });
-// });
+app.put('/user_cocktails/spring/update/:id', function(req, res) {
+  let id = req.body;
+  console.log(req.body)
+  console.log(req.params.id)
+  db
+    .none("UPDATE user_cocktails SET name = $1 WHERE id = $2",
+      [req.body.name, req.params.id])
+    .then(function() {
+      res.send('Name updated')
+    })
+    .catch(function() {
+      res.send('Fail.');
+    });
+});
 
-// app.get('/user', function(req, res) {
-//   let data = req.params.id
-//   db
-//     .any("SELECT * FROM user_cocktails")
-//     .then(function(data) {
-//       console.log(data)
-//        let all_data = {
-//         user_cocktails: data
-//       }
-//       res.render('user', all_data)
-//       // res.render('user', all_data)
-//     })
-// })
+app.get('/user_cocktails/summer/update/:id', function(req, res) {
+  let id = req.params.id;
+  db
+    .one("SELECT * FROM user_cocktails WHERE id = $1", [id])
+    .then(function(data) {
+      let summer = {
+        name: data.name,
+        id: data.id
+      }
+      res.render('user_cocktails/summer/update', summer);
+    });
+});
 
-// app.delete('/user_cocktails/delete', function(req, res) {
-//   let data = req.body
-//   db
-//     .one("DELETE FROM user_cocktails WHERE id = $1", id)
-//     .then(function() {
-//       let delete_data = {
-//         user_cocktails: data
-//       };
-//     console.log(delete_data)
-//     })
-//     res.redirect('user_cocktails/winter')
-// })
+app.put('/user_cocktails/summer/update/:id', function(req, res) {
+  let id = req.body;
+  console.log(req.body)
+  console.log(req.params.id)
+  db
+    .none("UPDATE user_cocktails SET name = $1 WHERE id = $2",
+      [req.body.name, req.params.id])
+    .then(function() {
+      res.send('Name updated')
+    })
+    .catch(function() {
+      res.send('Fail.');
+    });
+});
 
-// app.get('/user_cocktails/update', function(req, res) {
-//   res.render('user_cocktails/update')
-// })
+app.get('/user_cocktails/fall/update/:id', function(req, res) {
+  let id = req.params.id;
+  db
+    .one("SELECT * FROM user_cocktails WHERE id = $1", [id])
+    .then(function(data) {
+      let fall = {
+        name: data.name,
+        id: data.id
+      }
+      res.render('user_cocktails/fall/update', fall);
+    });
+});
 
-// app.put('/user_cocktails/update', function(req, res) {
-//   db
-//     .none("UPDATE user_cocktails SET name = $1 WHERE name = $2",
-//       [req.body.name, req.body.user_cocktails.name]
-//     ).catch(function() {
-//       res.send('Fail.');
-//     }).then(function() {
-//       res.send('Email updated');
-//     });
-// });
-
+app.put('/user_cocktails/fall/update/:id', function(req, res) {
+  let id = req.body;
+  console.log(req.body)
+  console.log(req.params.id)
+  db
+    .none("UPDATE user_cocktails SET name = $1 WHERE id = $2",
+      [req.body.name, req.params.id])
+    .then(function() {
+      res.send('Name updated')
+    })
+    .catch(function() {
+      res.send('Fail.');
+    });
+});
 
 app.get('/login', function(req, res) {
   res.render('login/index');
