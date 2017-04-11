@@ -40,20 +40,26 @@ app.get('/', function(req, res){
 });
 
 app.get('/seasons_spirits', function(req, res){
-  db
+  console.log(req.session.user)
+  if (req.session.user) {
+    db
     .any("SELECT * FROM seasons")
     .then(function(seasons_data) {
         db
           .any("SELECT * FROM spirits")
           .then(function(spirits_data) {
             let all_data = {
+              logged_in: true,
               seasons: seasons_data,
               spirits: spirits_data
-            };
+            }
+            res.render("seasons_spirits/index", all_data);
+            });
       // console.log(all_data)
-          res.render("seasons_spirits/index", all_data);
           });
-    });
+  } else {
+    res.redirect('/');
+  }
 });
 
 app.post('/seasons_spirits/cocktails', function(req, res) {
@@ -78,6 +84,18 @@ app.get('/user_cocktails', function(req, res) {
 app.get('/user_cocktails/new', function(req, res) {
   res.render('user_cocktails/new');
 });
+
+// app.get('/user_cocktails/new', function(req, res) {
+//   if (req.session.user) {
+//     let data = {
+//       "logged_in": true,
+//       "email": req.session.user.email
+//     };
+//     res.render('user_cocktails/new', data);
+//   } else {
+//     res.render('user_cocktails/new');
+//   }
+// });
 
 app.post('/user_cocktails/new', function(req, res) {
   var name = req.body.name;
@@ -282,7 +300,8 @@ app.put('/user_cocktails/spring/update/:id', function(req, res) {
     .none("UPDATE user_cocktails SET name = $1 WHERE id = $2",
       [req.body.name, req.params.id])
     .then(function() {
-      res.send('Name updated')
+      // res.send('Name updated')
+      res.redirect('/')
     })
     .catch(function() {
       res.send('Fail.');
@@ -310,7 +329,8 @@ app.put('/user_cocktails/summer/update/:id', function(req, res) {
     .none("UPDATE user_cocktails SET name = $1 WHERE id = $2",
       [req.body.name, req.params.id])
     .then(function() {
-      res.send('Name updated')
+      // res.send('Name updated')
+      res.redirect('/')
     })
     .catch(function() {
       res.send('Fail.');
@@ -338,16 +358,33 @@ app.put('/user_cocktails/fall/update/:id', function(req, res) {
     .none("UPDATE user_cocktails SET name = $1 WHERE id = $2",
       [req.body.name, req.params.id])
     .then(function() {
-      res.send('Name updated')
+      // res.send('Name updated')
+      res.redirect('/')
     })
     .catch(function() {
       res.send('Fail.');
     });
 });
 
+// app.get('/api', function(req, res) {
+//   res.render('api');
+// })
+
 app.get('/api', function(req, res) {
-  res.render('api');
-})
+  if (req.session.user) {
+    let data = {
+      "logged_in": true,
+      "email": req.session.user.email
+    };
+    res.render('api', data);
+  } else {
+    res.render('api');
+  }
+});
+
+app.get('/credits', function(req, res) {
+  res.render('credits');
+});
 
 app.get('/signup', function(req, res){
   res.render('signup/index');
@@ -355,20 +392,49 @@ app.get('/signup', function(req, res){
 
 app.post('/signup', function(req, res){
   let data = req.body;
-  console.log(data);
+  // console.log(data);
   bcrypt
     .hash(data.password_digest, 10, function(err, hash) {
       db
         .none ("INSERT INTO users (email, password_digest, first_name, last_name) VALUES ($1, $2, $3, $4)", [data.email, hash, data.first_name, data.last_name])
         .then(function(user) {
         // res.send('User created!');
-        res.redirect('/seasons_spirits');
+          db
+            .one("SELECT * FROM users WHERE email = $1", [data.email])
+            .then(function(newUser){
+              // console.log(newUser)
+              req.session.user = newUser;
+              // console.log(req.session.user)
+              res.redirect('/seasons_spirits');
+            })
       })
         .catch(function() {
           res.send('You are already registered, please login!')
       });
   });
 });
+
+// app.post('/signup', function(req, res){
+//   let data = req.body;
+//   console.log(data);
+//   bcrypt
+//     .hash(data.password_digest, 10, function(err, hash) {
+//       db
+//         .none("INSERT INTO users (email, password_digest, first_name, last_name) VALUES ($1, $2, $3, $4)", [data.email, hash, data.first_name, data.last_name])
+//         .then(function(user) {
+//           db
+//           .one("SELECT * FROM users WHERE email = $1", [data.email])
+//           .then(function(signedin) {
+//             req.session.user = signedin
+//             res.redirect('/seasons_spirits');
+//           })
+//         // res.send('User created!');
+//       })
+//         .catch(function() {
+//           res.send('You are already registered, please login!')
+//       });
+//   });
+// });
 
 app.get('/login', function(req, res) {
   res.render('login/index');
@@ -380,11 +446,12 @@ app.post('/login', function(req, res) {
   db
     .one("SELECT * FROM users WHERE email = $1", [data.email])
     .then(function(user) {
-      console.log("this is user", user)
       bcrypt.compare(data.password_digest, user.password_digest, function(err, cmp) {
         if (cmp) {
           req.session.user = user;
           res.redirect('/seasons_spirits');
+          // res.redirect('/');
+      console.log("this is user", user)
         } else {
           res.send("Invalid email/password. Please try again!");
         }

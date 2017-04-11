@@ -1,3 +1,104 @@
-{{name}}
+<!doctype html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cocktail App</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+  </head>
+  <body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Home</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/user_cocktails/new">Your Cocktail Menu</a></li>
+        <li><a href="/api">API</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+      <a href="/signup" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <br>
+
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">{{name}}</span>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="card-action">
+              <a href="/user_cocktails/spring/delete/{{id}}">Delete</a>
+              <a href="/user_cocktails/spring/update/{{id}}">Update</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<br><br><br><footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+        <h5 class="white-text">About Us</h5>
+          <p class="grey-text text-lighten-4">Majority of Cocktails sourced from <i>Chilled</i> Magazine and <a href="http://www.swizzleandsmash.com" target="_blank">Swizzle and Smash</a></p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Credits</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <!-- <li><a class="white-text" href="#!">Link 2</a></li> -->
+            <!-- <li><a class="white-text" href="#!">Link 3</a></li> -->
+            <!-- <li><a class="white-text" href="#!">Link 4</a></li> -->
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Facebook</a></li>
+            <li><a class="white-text" href="#!">LinkedIn</a></li>
+            <li><a class="white-text" href="#!">Pinterest</a></li>
+            <!-- <li><a class="white-text" href="#!">Link 4</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+
+  </body>
+
+</html>
+
+<!-- {{name}}
 <a href="/user_cocktails/spring/delete/{{id}}">DELETE</a>?
-<a href="/user_cocktails/spring/update/{{id}}">UPDATE</a>?
+<a href="/user_cocktails/spring/update/{{id}}">UPDATE</a>? -->

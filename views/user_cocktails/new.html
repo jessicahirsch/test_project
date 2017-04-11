@@ -1,6 +1,171 @@
-YOUR MENU:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Cocktail App</title>
 
-<br><a href="/user_cocktails/winter">WINTER COCKTAILS</a><br>
-<a href="/user_cocktails/spring">SPRING COCKTAILS</a><br>
-<a href="/user_cocktails/summer">SUMMER COCKTAILS</a><br>
-<a href="/user_cocktails/fall">FALL COCKTAILS</a>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/starter-template/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/starter-template/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Home</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/user_cocktails">New Cocktail</a></li>
+        <li><a href="/api">API</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+      <a href="/logout" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+<!-- {{#logged_in}} -->
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Your Cocktail Menu</h1>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">star</i></h2>
+            <h5 class="center"><a href="/user_cocktails/winter">Winter</a></h5>
+
+            <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">star</i></h2>
+            <h5 class="center"><a href="/user_cocktails/spring">Spring</a></h5>
+
+            <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">star</i></h2>
+            <h5 class="center"><a href="/user_cocktails/summer">Summer</a></h5>
+
+            <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">star</i></h2>
+            <h5 class="center"><a href="/user_cocktails/fall">Fall</a></h5>
+
+            <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <br><br>
+
+    <div class="section">
+
+    </div>
+  </div>
+<!--   {{/logged_in}}
+
+  {{^logged_in}}
+  Oops! You're not <a href="/login">logged in</a>!
+  {{/logged_in}} -->
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+        <h5 class="white-text">About Us</h5>
+          <p class="grey-text text-lighten-4">Majority of Cocktails sourced from <i>Chilled</i> Magazine and <a href="http://www.swizzleandsmash.com" target="_blank">Swizzle and Smash</a></p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Credits</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <!-- <li><a class="white-text" href="#!">Link 2</a></li> -->
+            <!-- <li><a class="white-text" href="#!">Link 3</a></li> -->
+            <!-- <li><a class="white-text" href="#!">Link 4</a></li> -->
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Facebook</a></li>
+            <li><a class="white-text" href="#!">LinkedIn</a></li>
+            <li><a class="white-text" href="#!">Pinterest</a></li>
+            <!-- <li><a class="white-text" href="#!">Link 4</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
+
+
+
+<!-- <a href="/signup">Sign Up</a>
+<a href="/login">Login</a>
+<a href="/user_cocktails">Add a New Cocktail</a> -->
+
+
+<!-- YOUR MENU:
+
+<a href="/user_cocktails/winter">WINTER COCKTAILS</a>
+<a href="/user_cocktails/spring">SPRING COCKTAILS</a>
+<a href="/user_cocktails/summer">SUMMER COCKTAILS</a>
+<a href="/user_cocktails/fall">FALL COCKTAILS</a> -->

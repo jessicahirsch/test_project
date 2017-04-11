@@ -1,7 +1,7 @@
 #card {
-  align-content: center;
   height: 250px;
   width: 250px;
+  display: inline-block;
 }
 
 .browser-default {
@@ -18,7 +18,7 @@
   box-shadow: 0 1px 0 0 rgb(0, 137, 255);
 }
 
-.input-field {
+.input-field input[type=text] {
   border-bottom: 1px solid rgb(0, 192, 255);
   box-shadow: 0 1px 0 0 rgb(0, 137, 255);
 }
@@ -32,4 +32,8 @@ html, body {
 #map {
   height: 50%;
   width: 50%;
+}
+
+footer {
+  /*position: absolute;*/
 }
