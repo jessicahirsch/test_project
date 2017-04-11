@@ -38,6 +38,7 @@ CREATE TABLE cocktails (
   name TEXT NOT NULL,
   ingredients TEXT NOT NULL,
   directions TEXT NOT NULL,
+  img_url TEXT NOT NULL,
   season_id INTEGER,
   FOREIGN KEY (season_id) REFERENCES seasons(id),
   spirit_id INTEGER,
