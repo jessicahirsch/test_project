@@ -1,4 +1,172 @@
-<form action='/user_cocktails/new' method='POST'>
+<!doctype html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Cocktail App</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/starter-template/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/starter-template/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  </head>
+  <body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Home</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+      <a href="/signup" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="container">
+  <!-- <div class="main-container"> -->
+    <!-- <div class="border-container"> -->
+      <h3 class="header center orange-text">Make your Own Cocktail!</h3>
+        <br><div class="col-lg-6 center-align">
+          <div class="well bs-component">
+            <form class="form-horizontal center-align" action='/user_cocktails/new' method="POST">
+              <fieldset>
+                <!-- <legend>Login</legend> -->
+                <div class="container">
+                  <br><input class="input-field" type='text' name='name' required placeholder="Name"><br>
+                  <div class="row">
+                    <div class="col s12 center-align">
+                      <div class="input-field col s6">
+                        <div class="submissionfield">
+                          <input type='text' name='ingredients' required placeholder="Ingredients"><br>
+                        </div>
+                      </div>
+                        <div class="input-field col s6">
+                        <!-- <div class="submissionfield"> -->
+                          <input type='text' name='directions' required placeholder="Directions"><br>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="row">
+                    <!-- <div class="col s12 center-align"> -->
+                      <br><div class="input-field col s6 offset-1">
+                        <select class="browser-default" required name="seasons" required>
+                        <!-- Select Season:<select name="season"> -->
+                          <option value="" disabled selected>Season</option>
+                          <!-- {{#seasons}}
+                          <option value="{{ id }}">{{ name }}</option>
+                          {{/seasons}} -->
+                          <option value="1">Winter</option>
+                          <option value="2">Spring</option>
+                          <option value="3">Summer</option>
+                          <option value="4">Fall</option>
+                        </select>
+                      </div>
+                      <div class="input-field col s6 offset-1">
+                        <select class="browser-default" required name="spirits" required>
+                        <!-- Select Spirit:<select name="spirit"> -->
+                          <option value="" disabled selected>Spirit</option>
+                          <option value="1">Vodka</option>
+                          <option value="2">Rum</option>
+                          <option value="3">Tequila</option>
+                          <option value="4">Mezcal</option>
+                          <option value="5">Whiskey</option>
+                          <option value="6">Bourbon</option>
+                          <option value="7">Gin</option>
+                        </select>
+                    <!-- <br><div class="form-group center-align"> -->
+                      <!-- <div class="col-lg-10 col-lg-offset-5"> -->
+                      </div>
+                      </div>
+                      <br><br><br><br><br><button type="submit" class="btn-large waves-effect waves-light orange">Submit</button>
+                    </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+
+  <br><br><br><footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+        <h5 class="white-text">About Us</h5>
+          <p class="grey-text text-lighten-4">Majority of Cocktails sourced from <i>Chilled</i> Magazine and <a href="/www.swizzleandsmash.com">Swizzle and Smash</a></p>
+
+
+        </div>
+        <!-- <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div> -->
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Facebook</a></li>
+            <li><a class="white-text" href="#!">LinkedIn</a></li>
+            <li><a class="white-text" href="#!">Pinterest</a></li>
+            <!-- <li><a class="white-text" href="#!">Link 4</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+
+<form action="/seasons_spirits/cocktails" method="POST">
+
+  Select Season:<select name="season">
+  <option value="" disabled selected>Season</option>
+  {{#seasons}}
+  <option value="{{ id }}">{{ name }}</option>
+  {{/seasons}}
+  </select>
+
+  Select Spirit:<select name="spirit">
+  <option value="" disabled selected>Spirit</option>
+  {{#spirits}}
+  <option value="{{ id }}">{{ name }}</option>
+  {{/spirits}}
+  </select>
+
+  <button type='submit'>Submit</button>
+
+</form>
+
+
+</body>
+</html> -->
+
+
+<!-- <form action='/user_cocktails/new' method='POST'>
 
   Name: <input type='text' name='name'><br>
   <div class="submissionfield">
@@ -31,4 +199,4 @@
 
 <button type='submit'>Submit</button><br>
 
-</form>
+</form> -->

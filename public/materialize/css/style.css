@@ -1,5 +1,35 @@
 #card {
   align-content: center;
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
+}
+
+.browser-default {
+
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid rgb(0, 192, 255);
+  box-shadow: 0 1px 0 0 rgb(0, 137, 255);
+}
+
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid rgb(0, 192, 255);
+  box-shadow: 0 1px 0 0 rgb(0, 137, 255);
+}
+
+.input-field {
+  border-bottom: 1px solid rgb(0, 192, 255);
+  box-shadow: 0 1px 0 0 rgb(0, 137, 255);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 50%;
+  width: 50%;
 }

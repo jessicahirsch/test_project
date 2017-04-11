@@ -85,6 +85,7 @@ app.post('/user_cocktails/new', function(req, res) {
   var directions = req.body.directions;
   var seasons = req.body.seasons;
   var spirits = req.body.spirits;
+  console.log(seasons)
   db
     .none("INSERT INTO user_cocktails (name, ingredients, directions, season_id, spirit_id) VALUES ($1, $2, $3, $4, $5)", [name, ingredients, directions, seasons, spirits])
     .then(function() {
@@ -231,11 +232,6 @@ app.get('/user_cocktails/fall/delete/:id', function(req, res) {
     res.redirect('/');
 });
 
-// app.put('/user_cocktails/winter/update/:id', function(req, res) {
-//   let id = req.params.id;
-//   res.render('/user_cocktails/winter/update')
-// });
-
 app.get('/user_cocktails/winter/update/:id', function(req, res) {
   let id = req.params.id;
   db
@@ -349,6 +345,10 @@ app.put('/user_cocktails/fall/update/:id', function(req, res) {
     });
 });
 
+app.get('/api', function(req, res) {
+  res.render('api');
+})
+
 app.get('/signup', function(req, res){
   res.render('signup/index');
 });
@@ -365,7 +365,7 @@ app.post('/signup', function(req, res){
         res.redirect('/seasons_spirits');
       })
         .catch(function() {
-          res.send('Are you already a user? Please login!')
+          res.send('You are already registered, please login!')
       });
   });
 });
@@ -390,9 +390,9 @@ app.post('/login', function(req, res) {
         }
       })
     })
-  .catch(function() {
-          res.send('Fail')
-      });
+    .catch(function() {
+      res.send('Fail')
+    });
 });
 
 app.get('/logout', function(req, res){
