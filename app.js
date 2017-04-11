@@ -63,6 +63,7 @@ app.get('/seasons_spirits', function(req, res){
 });
 
 app.post('/seasons_spirits/cocktails', function(req, res) {
+  if (req.session.user) {
   var season_id = req.body.season;
   var spirit_id = req.body.spirit;
   console.log(season_id, spirit_id);
@@ -71,18 +72,55 @@ app.post('/seasons_spirits/cocktails', function(req, res) {
     .then(function(data) {
       console.log(data)
       let cocktail_data = {
+        logged_in: true,
         cocktails: data
       };
     res.render('cocktails/index', cocktail_data)
-  });
-});
+  })
+    } else {
+    res.redirect('/');
+  }
+})
+
+// app.post('/seasons_spirits/cocktails', function(req, res) {
+//   var season_id = req.body.season;
+//   var spirit_id = req.body.spirit;
+//   console.log(season_id, spirit_id);
+//   db
+//     .any("SELECT * FROM cocktails WHERE season_id = $1 AND spirit_id = $2", [season_id, spirit_id])
+//     .then(function(data) {
+//       console.log(data)
+//       let cocktail_data = {
+//         cocktails: data
+//       };
+//     res.render('cocktails/index', cocktail_data)
+//   });
+// });
+
+// app.get('/user_cocktails', function(req, res) {
+//   res.render('user_cocktails');
+// });
 
 app.get('/user_cocktails', function(req, res) {
-  res.render('user_cocktails');
+  if (req.session.user) {
+    let data = {
+      "logged_in": true,
+    };
+    res.render('user_cocktails', data);
+  } else {
+    res.render('user_cocktails');
+  }
 });
 
 app.get('/user_cocktails/new', function(req, res) {
-  res.render('user_cocktails/new');
+  if (req.session.user) {
+    let data = {
+      "logged_in": true,
+    };
+    res.render('user_cocktails/new', data);
+  } else {
+    res.render('user_cocktails/new');
+  }
 });
 
 // app.get('/user_cocktails/new', function(req, res) {
