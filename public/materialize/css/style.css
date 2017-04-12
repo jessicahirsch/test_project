@@ -1,7 +1,8 @@
 #card {
   height: 250px;
   width: 250px;
-  display: inline-block;
+  /*display: inline-block;*/
+  display: run-in;
 }
 
 .browser-default {
