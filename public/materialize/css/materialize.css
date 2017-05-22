@@ -8870,3 +8870,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     margin-bottom: 5em;
   }
 }
+
+.background {
+  background-image: url("https://unsplash.com/search/cocktails?photo=YIUawXx7xm0.jpg");
+}
